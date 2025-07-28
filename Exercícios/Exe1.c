@@ -12,7 +12,7 @@ int main (){
     srand(time(NULL));
 
     for (int i = 0; i < TAM; i++){
-        vetor[i] = rand() % 100;
+        vetor[i] = rand(10) % 100;
     }
 
     for (int i = 0; i < TAM; i++){
