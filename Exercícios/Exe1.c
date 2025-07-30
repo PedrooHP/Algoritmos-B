@@ -29,16 +29,17 @@ int main (){
         }
 
         if (jaInserido == 0){                                                // Se número ainda não foi inserido
-            vetor [posicaoDoUltimoNumeroInserido] = numero;
-            posicaoDoUltimoNumeroInserido++;
+            vetor [posicaoDoUltimoNumeroInserido] = numero;                 // Insere o número na posição atual
+            posicaoDoUltimoNumeroInserido++;                               // Avança a posição para o próximo número a ser inserido
         }
     }
 
-    for (int i = 0; i < posicaoDoUltimoNumeroInserido; i++){
-        printf("%d\t", vetor[i]);
+    // Exibe os números únicos inseridos no vetor
+    for (int i = 0; i < posicaoDoUltimoNumeroInserido; i++){            
+        printf("%d\t", vetor[i]);                                       // Imprime cada número do vetor com tabulação
     }
 
-    printf("\n");
+    printf("\n");                                                      // Imprime uma quebra de linha ao final da saída
 
     return 1;
 }
