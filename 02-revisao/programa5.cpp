@@ -18,8 +18,15 @@ int main() {
     Carro carro;
  
     for (int i = 0; i < TAM; i++) {
-        cout << "Placa: ";
-        cin >> carro.placa;
+        do {
+            cout << "Placa: ";
+            cin >> carro.placa;
+            if (carro.placa.size() == 7) {
+                break;
+            } else {
+                cout << "Placa invalida. Redigite....\n";
+            }
+        } while (true);
         cout << "Hora de entrada: ";
         cin >> carro.horaEntrada;        
  
