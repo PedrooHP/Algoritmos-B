@@ -34,10 +34,10 @@ struct Pedido {
                     cout << "Já tem muitos pedidos no sistema\n";
                 } else {
                     cout << "Nome do cliente: \n";
-                    cin >> pedidos[quantidadePedidos].nomeCliente;
+                    getline (cin, pedidos[quantidadePedidos].nomeCliente);
 
                     cout << "Nome do pedido: \n";
-                    cin >> pedidos[quantidadePedidos].itemPedido;
+                    getline (cin, pedidos[quantidadePedidos].itemPedido);
 
                     cout << "Valor do pedido: \n";
                     cin >> pedidos[quantidadePedidos].valor;
@@ -50,27 +50,57 @@ struct Pedido {
                 break;
 
             case 2:
-                cout << "Atualizar status do pedido\n";
-                //Implementar
+                if (quantidadePedidos == 0){
+                    cout << "Não tem nenhum pedido para atualizar\n";
+                } else {
+                    cout << "Atualizar status do pedido\n";
+                    for (int i= 0; i < quantidadePedidos; i++){
+                        cout << i << " - Cliente: " << pedidos[i].nomeCliente
+                             <<", Pedido: " << pedidos[i].itemPedido
+                             <<", Status atual" << pedidos[i].status << endl;
+                    }
+                    int indice;
+                    cout << "Digite o número do pedido que deseja atualizar: ";
+                    cin >> indice;
+                    cin.ignore();
+
+                    if (indice >= 0 && indice < quantidadePedidos){
+                        cout << "Digite o novo status do pedido (pronto ou entregue): ";
+                        getline (cin, pedidos[indice].status);
+                        cout << "Status atualizado com sucesso!\n";
+                    } else {
+                        cout << "indice invalido!\n";
+                    }
+                }
+
                 break;
 
             case 3:
                 cout << "Listar todos os pedidos: \n";
                 if (quantidadePedidos == 0){
                     cout << "Não há nenhum pedido!";
-                }else{
+                } else {
                     cout << "L I S T A  D E  P E D I D O S\n";
                     for (int i = 0; i < quantidadePedidos; i++){
-                        cout << "Cliente:\n" << pedidos[i].nomeCliente
-                             << ", Item pedido: \n" << pedidos[i].itemPedido
-                             << ", Satus: \n" << pedidos[i].status << endl;
+                        cout << "Cliente: " << pedidos[i].nomeCliente
+                             << ", Item pedido: " << pedidos[i].itemPedido
+                             << ", Valor do pedido: " << pedidos[i].valor
+                             << ", Satus: " << pedidos[i].status << endl;
                     }
                 }
                 break;
 
             case 4:
                 cout << "Mostrar total faturado: \n";
-                //implementar
+                float totalFaturado;
+                totalFaturado = 0;
+
+                for (int i = 0; i < quantidadePedidos; i++){
+                    if (pedidos[i].status == "entregue"){
+                        totalFaturado += pedidos[i].valor;
+                    }
+                }
+                cout << "total faturado no dia: " << totalFaturado << endl;
                 break;
 
             case 5:
