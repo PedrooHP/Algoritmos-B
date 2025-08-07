@@ -18,7 +18,7 @@ struct Pedido {
     
 
     do{
-        cout << "=== M E N U  R E S T A U R A N T E ===";
+        cout << "=== M E N U  R E S T A U R A N T E ===\n";
         cout << "1 - Entrar com um novo pedido\n";
         cout << "2 - Atualizar o pedido\n";
         cout << "3 - Listar todos os pedidos\n";
@@ -34,13 +34,13 @@ struct Pedido {
                     cout << "Já tem muitos pedidos no sistema\n";
                 } else {
                     cout << "Nome do cliente: \n";
-                    cin >> pedidos[quantidadePedidos].nomeCliente);
+                    cin >> pedidos[quantidadePedidos].nomeCliente;
 
                     cout << "Nome do pedido: \n";
-                    cin >> pedidos[quantidadePedidos].itemPedido);
+                    cin >> pedidos[quantidadePedidos].itemPedido;
 
                     cout << "Valor do pedido: \n";
-                    cin >> pedidos[quantidadePedidos].valor);
+                    cin >> pedidos[quantidadePedidos].valor;
 
                     pedidos[quantidadePedidos].status = "Em preparo";
                     quantidadePedidos++;
@@ -56,7 +56,16 @@ struct Pedido {
 
             case 3:
                 cout << "Listar todos os pedidos: \n";
-                //Implementar
+                if (quantidadePedidos == 0){
+                    cout << "Não há nenhum pedido!";
+                }else{
+                    cout << "L I S T A  D E  P E D I D O S\n";
+                    for (int i = 0; i < quantidadePedidos; i++){
+                        cout << "Cliente:\n" << pedidos[i].nomeCliente
+                             << ", Item pedido: \n" << pedidos[i].itemPedido
+                             << ", Satus: \n" << pedidos[i].status << endl;
+                    }
+                }
                 break;
 
             case 4:
@@ -68,7 +77,7 @@ struct Pedido {
                 cout << "Fechar o programa\n";
                 break;
 
-            default;
+            default:
                 cout << "Opcao invalida\n";
                 break;
             
