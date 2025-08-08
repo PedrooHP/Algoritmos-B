@@ -80,6 +80,17 @@ struct Pedido {
 
             case 3: // Lista de pedidos
                 cout << "Listar todos os pedidos: \n";
+<<<<<<< HEAD
+                if (pedidos == 0){
+                    cout << "Não há nenhum pedido!";
+                    return;
+                }else{
+                    cout << "L I S T A  D E  P E D I D O S";
+                    for (int i = 0; i <= quantidadePedidos; i++){
+                        cout << "Cliente: " << pedido.nomeCliente << ", Item: " << pedido.itemPedido
+                    }
+                }
+=======
                 if (quantidadePedidos == 0){
                     cout << "Não há nenhum pedido!";
                 } else {
@@ -92,6 +103,7 @@ struct Pedido {
                              << ", Satus: " << pedidos[i].status << endl;
                     }
                 }
+>>>>>>> d800c773a43e26b06dde378490c963594f507791
                 break;
 
             case 4: // Mostra o total faturado no dia
