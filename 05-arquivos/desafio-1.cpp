@@ -5,7 +5,9 @@
 #define TAM 5
 using namespace std;
 
-string nome;
+struct Pessoa {
+    string nome;
+};
 
 void lerPessoa (Pessoa vetor[], int n){
     for (int i = 0; i < n; i++){
@@ -22,10 +24,10 @@ void exibirPessoa (Pessoa vetor[], int n){
 }
 
 int main() {
-    int Pessoa vetor[5];
+    Pessoa vetor[TAM];
 
     lerPessoa(vetor, TAM);
     exibirPessoa(vetor, TAM);
 
-    return 1;
+    return 0;
 }

@@ -36587,7 +36587,9 @@ namespace std __attribute__ ((__visibility__ ("default")))
 # 6 "desafio-1.cpp"
 using namespace std;
 
-string nome;
+struct Pessoa {
+    string nome;
+};
 
 void lerPessoa (Pessoa vetor[], int n){
     for (int i = 0; i < n; i++){
@@ -36604,10 +36606,10 @@ void exibirPessoa (Pessoa vetor[], int n){
 }
 
 int main() {
-    int Pessoa vetor[5];
+    Pessoa vetor[5];
 
     lerPessoa(vetor, 5);
     exibirPessoa(vetor, 5);
 
-    return 1;
+    return 0;
 }
