@@ -1,3 +1,12 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <cctype>
+#include <sstream>
+#include <fstream>
+
+using namespace std;
+
 int contarVogais(string frase) {
     int totalVogais = 0;
 
@@ -30,7 +39,7 @@ string trocarCaracterOrigemDestino(string frase, char letraOrigem, char letraDes
     return frase;
 }
 
-int contarPalavras(string& frase) {
+int contarPalavras(string & frase) {
     istringstream stream(frase);
     string palavra;
     int contagem = 0;
@@ -76,4 +85,3 @@ string copiarArquivo2String(string nomeArquivo) {
     procuradorArquivo.close();
 
     return resposta;
-}
