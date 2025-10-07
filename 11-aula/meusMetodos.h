@@ -24,6 +24,7 @@ int cadastrarPessoa(Pessoa vetor[], int tamanho, int qtdPessoas, string baseDado
     cout << "Nome: ";
     getline(cin, nome);
     fflush(stdin);
+
     cout << "Email: ";
     cin >> email;
     fflush(stdin);
