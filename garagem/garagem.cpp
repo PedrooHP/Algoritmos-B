@@ -10,16 +10,13 @@ using namespace std;
 // Inclui as structs Veiculo e Pessoa
 #include "meusTipos.h" 
 
-// Inclui as funções auxiliares que criaremos
+// Inclui as funções auxiliares
 #include "meusMetodos.h" 
 
 
-// ----------------------------------------------------------------------
-// FUNÇÕES DE EXIBIÇÃO E CARREGAMENTO (Em vez de estarem no .h,
-// vamos colocá-las aqui por enquanto para focar no fluxo principal)
-// ----------------------------------------------------------------------
-
+// FUNÇÕES DE EXIBIÇÃO 
 // Função 2 do Menu: Listar Veículos
+
 void listarVeiculos(Veiculo garagem[], int qtdVeiculos) {
     cout << "\n--- Veiculos na Garagem ---\n";
     if (qtdVeiculos == 0) {
@@ -34,7 +31,7 @@ void listarVeiculos(Veiculo garagem[], int qtdVeiculos) {
     cout << "Total de veiculos: " << qtdVeiculos << endl;
 }
 
-// Adaptação da 'conectarBase' do professor para carregar Veiculos do CSV
+// 'conectarBase' Veiculos do CSV
 int carregarBaseVeiculos(string nomeBaseDados, Veiculo garagem[], int tamanho) {
     ifstream procuradorArquivo;
     procuradorArquivo.open(nomeBaseDados);
@@ -65,15 +62,14 @@ int carregarBaseVeiculos(string nomeBaseDados, Veiculo garagem[], int tamanho) {
 }
 
 
-// ----------------------------------------------------------------------
-// FUNÇÃO DO MENU PRINCIPAL (Menu do Desafio Avaliativo)
-// ----------------------------------------------------------------------
+// FUNÇÃO DO MENU PRINCIPAL
+
 void menuGaragem(string baseDados, Veiculo garagem[], int tamanho, int qtdVeiculos) {
     int opcao;
     
-    // As chamadas para as opções 1 e 3 serão criadas no arquivo meusMetodos.h
+    // As chamadas para as opções 1 e 3 estão criadas no arquivo meusMetodos.h
     do {
-        system("cls"); // Limpa a tela
+        system("cls"); // Limpa a tela (infelizmente não funciona)
         cout << "\n================================\n";
         cout << "        MENU GARAGEM\n";
         cout << "================================\n";
@@ -87,15 +83,15 @@ void menuGaragem(string baseDados, Veiculo garagem[], int tamanho, int qtdVeicul
         switch (opcao)
         {
         case 1: 
-            entradaVeiculo(baseDados, garagem, tamanho, &qtdVeiculos); // AGORA CHAMA A FUNÇÃO REAL
-            // cout << "\n[Opcao 1] - Logica de Entrada de Veiculo (Implementar em meusMetodos.h)\n"; // Remova ou comente esta linha
+            entradaVeiculo(baseDados, garagem, tamanho, &qtdVeiculos); // CHAMADA DA FUNÇÃO
+            // cout << "\n[Opcao 1] - Logica de Entrada de Veiculo
             break;
         case 2:
             listarVeiculos(garagem, qtdVeiculos);
             break;
         case 3:
-            saidaVeiculo(baseDados, garagem, &qtdVeiculos); // AGORA CHAMA A FUNÇÃO REAL
-            // cout << "\n[Opcao 3] - Logica de Saida de Veiculo (Implementar em meusMetodos.h)\n"; // Remova ou comente esta linha
+            saidaVeiculo(baseDados, garagem, &qtdVeiculos); // CHAMADA DA FUNÇÃO
+            // cout << "\n[Opcao 3] - Logica de Saida de Veiculo
             break;
         case 4:
             cout << "Finalizando o programa...\n";
@@ -116,9 +112,8 @@ void menuGaragem(string baseDados, Veiculo garagem[], int tamanho, int qtdVeicul
 }
 
 
-// ----------------------------------------------------------------------
 // MAIN
-// ----------------------------------------------------------------------
+
 int main() {
     Veiculo garagem[TAM];
     int qtdVeiculos = 0;
@@ -130,5 +125,5 @@ int main() {
     // 2. Executar o menu
     menuGaragem(baseDados, garagem, TAM, qtdVeiculos);
     
-    return 0; // Boa prática: retornar 0 para sucesso
+    return 0; // retornar 0
 }

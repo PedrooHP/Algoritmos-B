@@ -2,17 +2,11 @@
 #include <string>
 #include <fstream>
 #include <sstream> 
-#include <bits/stdc++.h> // Para toupper e isdigit
+#include <bits/stdc++.h> // BIBLIOTECA PARA FAZER A FUNÇÃO DO VALIDADOR DE DATA E HORA
 
 using namespace std;
 
-// NOTA: É fundamental que 'meusTipos.h' inclua a 'struct Veiculo'
-// A struct Veiculo é necessária aqui, mas está em outro arquivo.
-// O compilador fará a ligação pelo #include em 'garagem.cpp'
-
-// ----------------------------------------------------------------------
 // 1. FUNÇÕES AUXILIARES DE GARAGEM E VALIDAÇÃO
-// ----------------------------------------------------------------------
 
 // Busca um veículo pela placa e retorna o índice, ou -1 se não encontrar.
 int buscarPlaca(Veiculo garagem[], int qtdVeiculos, string placa) {
@@ -47,9 +41,9 @@ void salvarBase(string nomeBaseDados, Veiculo garagem[], int qtdVeiculos) {
 
 // Valida se a string tem o formato AAAA-MM-DD_HH:MM (16 caracteres)
 // E se o MÊS e o DIA são numericamente válidos.
-// ----------------------------------------------------
+
 bool validarFormatoDataHora(string dataHora) {
-    // 1. Checagem de ESTRUTURA (do passo anterior)
+    // 1. Checagem
     if (dataHora.size() != 16) {
         return false;
     }
@@ -60,7 +54,7 @@ bool validarFormatoDataHora(string dataHora) {
         if (i == 4 || i == 7 || i == 10 || i == 13) continue;
         if (!isdigit(dataHora[i])) return false;
     }
-    // A partir daqui, sabemos que é 'DDDD-DD-DD_DD:DD' com dígitos
+    // Exemplo de como ficaria aplicado 'DDDD-DD-DD_DD:DD' com dígitos
 
     // 2. VALIDAÇÃO NUMÉRICA DO CALENDÁRIO
     try {
@@ -82,23 +76,23 @@ bool validarFormatoDataHora(string dataHora) {
 
         // Checagem de Lógica:
         
-        // A. Checa MÊS (1 a 12)
+        // Checa o MÊS (1 a 12)
         if (mes < 1 || mes > 12) {
             return false;
         }
 
-        // B. Checa DIA (1 a 31 - Checagem Simplificada de 31 dias)
-        // Nota: Não estamos verificando 30 dias/mês ou anos bissextos para simplificar
+        // Checa o DIA (1 a 31)
+
         if (dia < 1 || dia > 31) {
             return false;
         }
 
-        // C. Checa HORA (0 a 23)
+        // Checa HORA (0 a 23)
         if (hora < 0 || hora > 23) {
             return false;
         }
 
-        // D. Checa MINUTO (0 a 59)
+        // Checa MINUTO (0 a 59)
         if (minuto < 0 || minuto > 59) {
             return false;
         }
@@ -113,13 +107,10 @@ bool validarFormatoDataHora(string dataHora) {
 }
 
 
-// ----------------------------------------------------------------------
-// 2. FUNÇÕES DO MENU DA GARAGEM (Opcão 1 e 3 do Desafio)
-// ----------------------------------------------------------------------
+// 2. FUNÇÕES DO MENU DA GARAGEM
 
-// ----------------------------------------------------
 // Opção 1: Entrada de veículo (Inserir no vetor E no arquivo)
-// ----------------------------------------------------
+
 void entradaVeiculo(string nomeBaseDados, Veiculo garagem[], int tamanho, int *qtdVeiculos) {
     if (*qtdVeiculos == tamanho) {
         cout << "Garagem lotada. Entrada negada.\n";
@@ -161,7 +152,7 @@ void entradaVeiculo(string nomeBaseDados, Veiculo garagem[], int tamanho, int *q
             novoVeiculo.dataEntrada = dataEntrada;
             break; // Sai do loop da data
         } else {
-            cout << "ERRO: Formato invalido ou contem caracteres invalidos. Use AAAA-MM-DD_HH:MM e apenas numeros nos campos. Tente novamente.\n";
+            cout << "Formato invalido ou contem caracteres invalidos. Use AAAA-MM-DD_HH:MM e apenas numeros nos campos.\n";
         }
     } while (true);
     
@@ -174,7 +165,7 @@ void entradaVeiculo(string nomeBaseDados, Veiculo garagem[], int tamanho, int *q
     cout << "\nVeiculo " << placa << " registrado e salvo na base de dados.\n";
 }
 
-// Opção 3: Saída de veículo (Remover do vetor E do arquivo)
+// Opção 3: Saída de veículo (Remover do vetor e do arquivo)
 void saidaVeiculo(string nomeBaseDados, Veiculo garagem[], int *qtdVeiculos) {
     string placa;
     cout << "\n--- Saida de Veiculo ---\n";
@@ -185,7 +176,7 @@ void saidaVeiculo(string nomeBaseDados, Veiculo garagem[], int *qtdVeiculos) {
     int indice = buscarPlaca(garagem, *qtdVeiculos, placa);
 
     if (indice == -1) {
-        cout << "ERRO: Placa nao encontrada na garagem.\n";
+        cout << "Placa nao encontrada na garagem.\n";
         return;
     }
     
@@ -197,5 +188,5 @@ void saidaVeiculo(string nomeBaseDados, Veiculo garagem[], int *qtdVeiculos) {
     // 3. Salva a alteração no arquivo
     salvarBase(nomeBaseDados, garagem, *qtdVeiculos); 
     
-    cout << "Veiculo " << placa << " removido e base de dados atualizada. Vaga liberada.\n";
+    cout << "Veiculo " << placa << " removido e base de dados. Vaga liberada.\n";
 }

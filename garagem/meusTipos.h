@@ -9,5 +9,5 @@ typedef struct {
 // Estrutura para o Desafio da Garagem
 typedef struct {
     std::string placa;
-    std::string dataEntrada; // Alterado de 'horaEntrada' para 'dataEntrada' para seguir o struct sugerido
+    std::string dataEntrada;
 } Veiculo;
