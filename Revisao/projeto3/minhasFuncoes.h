@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+#define TAM 5
+
+void lerAlunos(Aluno vetorAlunos[]){
+    cout << "DADOS DOS ALUNOS\n";
+    for (int i = 0; i < TAM; i++){
+        cout << "\n [Aluno " << i + 1 << "]\n";
+
+        cout << "Nome: ";
+        
+        if (i == 0) cin.ignore();
+        getline(cin, vetorAlunos[i].matricula);
+
+        //leitura de notas
+
+        cout << "Nota: ";
+        cin >> vetorAlunos[i].nota;
+
+        if (i < TAM - 1) cin.ignore();
+    }
+}
+
+//Função para exibir os dados dos alunos
+
+void exibirAlunos (Aluno vetorAlunos[]){
+    cout << "\n\nLISTAGEM DOS ALUNOS CADASTRADOS\n";
+    for (int i = 0; i < TAM; i++){
+        cout << "\n [Aluno " << i + 1 << "]\n";
+        cout << "Nome : " << vetorAlunos[i].nome << endl;
+        cout << "Matricula: " << vetorAlunos[i].matricula << endl;
+        cout << "Nota: " << vetorAlunos[i].nota << endl;
+    }
+}
+
+//Função para salvar o vetor em um arquivo
+void salvarAlunosEmArquivo(Aluno vetorAlunos[], string nomeArquivo){
+    ofstream escritorArquivo;
+    // Abre o arquivo para escrita (sobrescreve o conteúdo se o arquivo existir)
+    escritorArquivo.open(nomeArquivo);
+
+    if (!escritorArquivo){
+        cout << "\n Não foi possível abrir o arquivo para escrita \n";
+        return;
+    }
+    for (int i = 0; i < TAM; i++){
+        //um aluno por linha
+        escritorArquivo << vetorAlunos[i].nome << ","
+                        << vetorAlunos[i].matricula << ","
+                        << vetorAlunos[i].nota;
+
+        //Adiciona uma quebra de linha para o próximo aluno
+        if (i < TAM - 1){
+            escritorArquivo << "\n";
+        }
+    }
+
+    escritorArquivo.close();
+    cout << "\n Dados de " << TAM << " alunos salvos em '" << nomeArquivo << "'.\n";
+}
+
+float calcularMediaGeral(Aluno vetorAlunos[]){
+    float somaNotas = 0.0;
+
+    for (int i = 0; i < TAM; i++){
+        somaNotas += vetorAlunos[i].nota;
+    }
+
+    //calcula a média dividindo
+    float media = somaNotas / TAM;
+
+    return media;
+}
