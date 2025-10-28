@@ -2,6 +2,8 @@
     "files.associations": {
         "stdio.h": "c",
         "iostream": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "iosfwd": "cpp",
+        "fstream": "cpp"
     }
 }
